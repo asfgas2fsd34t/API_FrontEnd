@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ac14f97c-7baa-4732-9fa6-fce76f15037a" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/src/apis/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AppMain.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DialogInterface.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/Header.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/Main.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/authorization.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/request.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/InterfaceInfoDetail.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/InterfaceManager.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/BaseHeader.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/BaseSide.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/BaseSide.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composables/dark.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composables/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MaP7a1zWA8caZ8l22PEj2H20V6" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Java/NodeJs/node_modules/npm" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="F:\Java\NodeJs\node_modules\npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="ts.external.directory.path" value="F:\JavaProject\ApiCenter\element-plus-vite-starter\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\JavaProject\ApiCenter\element-plus-vite-starter\src\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\JavaProject\ApiCenter\element-plus-vite-starter\src\assets\error" />
+      <recent name="F:\JavaProject\ApiCenter\element-plus-vite-starter\src\components\ErrorPage" />
+      <recent name="F:\JavaProject\ApiCenter\element-plus-vite-starter\src\views" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="ac14f97c-7baa-4732-9fa6-fce76f15037a" name="变更" comment="" />
+      <created>1678002554375</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678002554375</updated>
+      <workItem from="1678002556774" duration="4343000" />
+      <workItem from="1678107247855" duration="2563000" />
+      <workItem from="1678269589458" duration="7130000" />
+      <workItem from="1678415476708" duration="2705000" />
+      <workItem from="1678448450104" duration="7252000" />
+      <workItem from="1678520701556" duration="13943000" />
+      <workItem from="1678540960337" duration="72000" />
+      <workItem from="1678541042745" duration="2062000" />
+      <workItem from="1678543133014" duration="3445000" />
+      <workItem from="1678626394253" duration="6233000" />
+      <workItem from="1678700238200" duration="11252000" />
+      <workItem from="1678790979089" duration="7251000" />
+      <workItem from="1678863193031" duration="3124000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
