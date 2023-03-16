@@ -48,6 +48,12 @@ export function apiUpdateInterfaceInfo(param:any) {
         data: param,
     })
 }
+export function apiAnalysis() {
+    return httpRequest({
+        url: '/analysis/top/interface/invoke',
+        method: 'get',
+    })
+}
 export function apiInvokeInterface(param:any) {
     return httpRequest({
         url: '/interfaceInfo/invoke',

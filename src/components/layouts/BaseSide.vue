@@ -23,7 +23,7 @@
           <el-menu-item index="/manager">
             接口管理
           </el-menu-item>
-          <el-menu-item index="/about" >
+          <el-menu-item index="/analysis" >
             接口分析
           </el-menu-item>
         </el-sub-menu>

@@ -17,8 +17,10 @@ import 'uno.css'
 import "element-plus/theme-chalk/src/message.scss"
 import 'element-plus/es/components/message/style/css'
 import {ElMessage} from "element-plus";
+import * as echarts from 'echarts'
 
 const app = createApp(App);
+app.config.globalProperties.$echarts = echarts
 app.use(router)
 
 router.beforeEach((to,from,next)=>{

@@ -14,7 +14,10 @@ export const constantRoutes: RouteRecordRaw[] = [
                 component:()=>import('../views/InterfaceInfoDetail.vue')},
             {path: '/manager',
                 meta:{isAuth:true,roles:"admin"},
-                component:()=>import('../views/InterfaceManager.vue')}
+                component:()=>import('../views/InterfaceManager.vue')},
+            {path: '/analysis',
+                meta:{isAuth:true,roles:"admin"},
+                component:()=>import('../views/Analysis.vue')}
         ]
     },
     {path: '/login',
