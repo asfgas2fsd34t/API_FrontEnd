@@ -25,7 +25,7 @@ export default defineConfig({
     proxy:{
       '/api': {
         //后端API服务器地址
-        target: 'http://43.138.31.92:8088',
+        target: 'http://43.138.31.92:7529',
         //此服务器是否https访问，默认false
         secure: false,
         //是否代理websockets
