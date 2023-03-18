@@ -25,7 +25,7 @@ export default defineConfig({
     proxy:{
       '/api': {
         //后端API服务器地址
-        target: 'http://43.138.31.92:7529',
+        target: 'http://43.138.31.92:8088',
         //此服务器是否https访问，默认false
         secure: false,
         //是否代理websockets
@@ -34,11 +34,6 @@ export default defineConfig({
         changeOrigin: true,
         //路径重写，是一个正则表达式，用于替换'/api'
         rewrite: (path) => path.replace(/^\/api/, '/api')
-        // pathRewrite: {
-        //   '^/api': "/"
-        //   //pathRewrite: {'^/api': '/'} 重写之后url为 http://192.168.1.16:8085/xxxx
-        //   //pathRewrite: {'^/api': '/api'} 重写之后url为 http://192.168.1.16:8085/api/xxxx
-        // }
       }
     }
   },
