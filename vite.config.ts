@@ -19,6 +19,21 @@ const pathSrc = path.resolve(__dirname, 'src')
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server:{
+    proxy:{
+      '/api': {
+        //后端API服务器地址
+        target: 'http://43.138.31.92:7529',
+        //此服务器是否https访问，默认false
+        secure: false,
+        //是否代理websockets
+        ws: true,
+        //是否开启跨域
+        changeOrigin: true,
+        //路径重写，是一个正则表达式，用于替换'/api'
+      }
+    }
+  },
   resolve: {
     alias: {
       '~/': `${pathSrc}/`,
