@@ -18,6 +18,8 @@ import {
 const pathSrc = path.resolve(__dirname, 'src')
 
 // https://vitejs.dev/config/
+// @ts-ignore
+// @ts-ignore
 export default defineConfig({
   server:{
     proxy:{
@@ -31,6 +33,12 @@ export default defineConfig({
         //是否开启跨域
         changeOrigin: true,
         //路径重写，是一个正则表达式，用于替换'/api'
+        rewrite: (path) => path.replace(/^\/api/, '/api')
+        // pathRewrite: {
+        //   '^/api': "/"
+        //   //pathRewrite: {'^/api': '/'} 重写之后url为 http://192.168.1.16:8085/xxxx
+        //   //pathRewrite: {'^/api': '/api'} 重写之后url为 http://192.168.1.16:8085/api/xxxx
+        // }
       }
     }
   },
