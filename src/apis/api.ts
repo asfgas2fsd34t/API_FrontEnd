@@ -13,6 +13,13 @@ export function apiGetInterfaceList(param: any) {
         params: param,
     })
 }
+export function apiGetInterfaceListAdmin(param: any) {
+    return httpRequest({
+        url: '/interfaceInfo/list',
+        method: 'get',
+        params: param,
+    })
+}
 export function apiGetInterfaceInfo(param:any) {
     return httpRequest({
         url: '/interfaceInfo/get',

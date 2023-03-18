@@ -7,10 +7,10 @@ export const constantRoutes: RouteRecordRaw[] = [
         component:()=>import('../components/AppMain.vue'),
         children:[
             {path: '/home',
-                meta:{isAuth:true},
+                // meta:{isAuth:true},
                 component:()=>import('../views/Home.vue')  },
             {path: '/interface/:id(\\d+)',
-                meta:{isAuth:true},
+                // meta:{isAuth:true},
                 component:()=>import('../views/InterfaceInfoDetail.vue')},
             {path: '/manager',
                 meta:{isAuth:true,roles:"admin"},

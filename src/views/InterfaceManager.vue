@@ -90,7 +90,7 @@ import { onMounted, reactive, ref, toRefs } from 'vue'
 import { ElMessage } from 'element-plus'
 import { Plus, Delete } from '@element-plus/icons-vue'
 import { useRoute, useRouter } from 'vue-router'
-import {apiGetInterfaceList,apiBatchDeleteInterfaceInfo,apiDeleteInterfaceInfo,apiUpdateInterfaceInfo} from "../apis/api";
+import {apiGetInterfaceListAdmin,apiBatchDeleteInterfaceInfo,apiDeleteInterfaceInfo,apiUpdateInterfaceInfo} from "../apis/api";
 import AddInterface from '../components/DialogInterface.vue'
 
 const router = useRouter()
@@ -119,7 +119,7 @@ const getInterfaceList = () => {
     current:state.currentPage,
     pageSize:state.pageSize
   }
-  apiGetInterfaceList(param).then((res) => {
+  apiGetInterfaceListAdmin(param).then((res) => {
     state.tableData = res.data.records
     state.total = res.data.total
     state.loading=false
