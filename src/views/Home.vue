@@ -51,6 +51,7 @@ function getInterfaceInfo() {
     pageSize:state.pageSize
   }
   apiGetInterfaceList(param).then((res: any) => {
+    console.log(res.data.records)
     state.tableData = res.data.records
     state.total = res.data.total
     console.log(res.data.total)
