@@ -61,9 +61,23 @@ export function apiAnalysis() {
         method: 'get',
     })
 }
-export function apiInvokeInterface(param:any) {
+export function apiGetUserName(param:any) {
     return httpRequest({
-        url: '/interfaceInfo/invoke',
+        url: '/interfaceInfo/name/user',
+        method: 'post',
+        data: param,
+    })
+}
+export function apiGetHeroLines(param:any) {
+    return httpRequest({
+        url: '/interfaceInfo/hero/lines',
+        method: 'post',
+        data: param,
+    })
+}
+export function apiGetQQInfo(param:any) {
+    return httpRequest({
+        url: '/interfaceInfo/qq/info',
         method: 'post',
         data: param,
     })

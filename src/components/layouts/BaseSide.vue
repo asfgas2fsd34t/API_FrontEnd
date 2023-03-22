@@ -34,7 +34,7 @@
 <script lang="ts" setup>
 // @ts-ignore
 let user= JSON.parse(localStorage.getItem('userInfo'))
-const show= user.userRole==="admin"
+const show= user?.userRole==="admin"
 import {
   Menu as IconMenu,
   Setting,

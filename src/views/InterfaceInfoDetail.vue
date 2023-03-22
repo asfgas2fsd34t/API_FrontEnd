@@ -51,7 +51,7 @@
 
 <script setup>
 import {onMounted, reactive, ref} from "vue";
-import {apiGetInterfaceInfo,apiInvokeInterface} from "../apis/api";
+import {apiGetInterfaceInfo,apiGetUserName,apiGetHeroLines,apiGetQQInfo} from "../apis/api";
 import {useRouter} from 'vue-router'
 import {ElMessage} from "element-plus";
 
@@ -81,9 +81,20 @@ function invoke(){
     id:router.currentRoute.value.params.id,
     userRequestParams:textarea.value
   }
-  apiInvokeInterface(params).then((res)=>{
+  if(params.id==="1"){
+    apiGetUserName(params).then((res)=>{
       result.value=res.data
-  })
+    })
+  }else if(params.id==="2"){
+    apiGetHeroLines(params).then((res)=>{
+      result.value=res.data
+    })
+  }else if(params.id==="3"){
+    apiGetQQInfo(params).then((res)=>{
+      result.value=res.data
+    })
+  }
+
 }
 onMounted(()=>{
   getInterfaceInfo()
