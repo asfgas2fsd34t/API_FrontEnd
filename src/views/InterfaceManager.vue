@@ -103,7 +103,7 @@ const state = reactive({
   multipleSelection: [], // 选中项
   total: 0, // 总条数
   currentPage: 1, // 当前页
-  pageSize: 10, // 分页大小
+  pageSize: 5, // 分页大小
   type: 'add', // 操作类型
 })
 
@@ -112,7 +112,7 @@ onMounted(() => {
   getInterfaceList()
 })
 
-// 首页热销商品列表
+// 接口列表
 const getInterfaceList = () => {
   state.loading = true
   const param={
@@ -128,9 +128,9 @@ const getInterfaceList = () => {
 function change(val,row){
   console.log(val,row)
   apiUpdateInterfaceInfo(row).then((res)=>{
-    if(val===1)
-    ElMessage.success("上线成功")
-    else ElMessage.success("下线成功")
+      if(val===1)
+        ElMessage.success("上线成功")
+      else ElMessage.success("下线成功")
   })
 }
 // 添加商品

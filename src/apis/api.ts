@@ -89,3 +89,45 @@ export function apiUserLogin(param:any) {
         data: param,
     })
 }
+export function apiUserRegister(param:any) {
+    return httpRequest({
+        url: '/user/register',
+        method: 'post',
+        data: param,
+    })
+}
+export function apiUserList(param:any) {
+    return httpRequest({
+        url: '/user/list/page',
+        method: 'get',
+        params: param,
+    })
+}
+export function apiGetUser(param:any) {
+    return httpRequest({
+        url: '/user/get',
+        method: 'get',
+        params: param,
+    })
+}
+export function apiAddUser(param:any) {
+    return httpRequest({
+        url: '/user/add',
+        method: 'post',
+        data: param,
+    })
+}
+export function apiDeleteUser(param:any) {
+    return httpRequest({
+        url: '/user/delete',
+        method: 'post',
+        data: param,
+    })
+}
+export function apiDeleteBatchUser(param:any) {
+    return httpRequest({
+        url: '/user/deleteBatch',
+        method: 'post',
+        data: param,
+    })
+}

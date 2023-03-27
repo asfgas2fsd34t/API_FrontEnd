@@ -23,6 +23,9 @@
           <el-menu-item index="/manager">
             接口管理
           </el-menu-item>
+          <el-menu-item index="/userManager">
+            用户管理
+          </el-menu-item>
           <el-menu-item index="/analysis" >
             接口分析
           </el-menu-item>
@@ -34,7 +37,7 @@
 <script lang="ts" setup>
 // @ts-ignore
 let user= JSON.parse(localStorage.getItem('userInfo'))
-const show= user?.userRole==="admin"
+const show= user?.userRole==="admin"||user?.userRole==="test"
 import {
   Menu as IconMenu,
   Setting,

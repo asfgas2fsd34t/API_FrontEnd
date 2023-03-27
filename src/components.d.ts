@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     AppMain: typeof import('./components/AppMain.vue')['default']
     BaseSide: typeof import('./components/layouts/BaseSide.vue')['default']
     DialogInterface: typeof import('./components/DialogInterface.vue')['default']
+    DialogUser: typeof import('./components/DialogUser.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']

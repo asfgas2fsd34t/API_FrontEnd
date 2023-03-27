@@ -13,9 +13,8 @@
         <el-form-item label="密码" prop="password">
           <el-input type="password" v-model.trim="state.ruleForm.password" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item>
-          <div style="color: #333">登录表示您已同意<a>《服务条款》</a></div>
-          <el-button style="width: 100%" type="primary" @click="submitForm">立即登录</el-button>
+        <el-form-item label="确认密码" prop="checkPassword">
+          <el-input type="password" v-model.trim="state.ruleForm.checkPassword" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button style="width: 100%" type="primary" @click="register">立即注册</el-button>
@@ -27,7 +26,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import {apiUserLogin} from "../apis/api";
+import {apiUserRegister} from "../apis/api";
 import {ElMessage} from "element-plus";
 import {useRouter} from "vue-router";
 
@@ -37,7 +36,8 @@ const loginForm = ref(null)
 const state = reactive({
   ruleForm: {
     username: '',
-    password: ''
+    password: '',
+    checkPassword:''
   },
   checked: true,
   rules: {
@@ -46,37 +46,37 @@ const state = reactive({
     ],
     password: [
       { required: 'true', message: '密码不能为空', trigger: 'blur' }
+    ],
+    checkPassword: [
+      { required: 'true', message: '密码不能为空', trigger: 'blur' }
     ]
   }
 })
-const submitForm = async () => {
+const register = async () => {
   loginForm.value.validate((valid) => {
-    if (valid) {
+    if (valid && state.ruleForm.password===state.ruleForm.checkPassword) {
       const params={
         userAccount:state.ruleForm.username,
-        userPassword:state.ruleForm.password
+        userPassword:state.ruleForm.password,
+        checkPassword:state.ruleForm.checkPassword
       }
-      apiUserLogin(params).then((res)=>{
-          if(res.code===0){
-              localStorage.setItem("userInfo",JSON.stringify(res.data))
-            if(router.currentRoute.value.query.redirect===undefined){
-              window.location.href='/'
-            }else{
-              window.location.href=router.currentRoute.value.query.redirect
-            }
-
-          }else{
-            ElMessage.error(res.message)
-          }
+      apiUserRegister(params).then((res)=>{
+        if(res.code===0){
+          ElMessage.success("注册成功")
+          window.location.href='/login'
+        }else{
+          ElMessage.error(res.message)
+        }
       })
     } else {
-      ElMessage.error('格式错误，请重新输入')
+      if(state.ruleForm.password!==state.ruleForm.checkPassword){
+        ElMessage.error('密码输入不一致')
+      }else{
+        ElMessage.error('格式错误，请重新输入')
+      }
       return false;
     }
   })
-}
-const register=async ()=>{
-  window.location.href='/register'
 }
 </script>
 

@@ -29,6 +29,7 @@ router.beforeEach((to,from,next)=>{
     if(to.meta.isAuth){
         if(localStorage.getItem('userInfo')!=null){
             if(to.meta.roles){
+                console.log(to.meta.roles)
                 // @ts-ignore
                 if(to.meta.roles.includes(user.userRole)){
                     next()

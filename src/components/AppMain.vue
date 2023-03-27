@@ -1,6 +1,5 @@
 <template>
 
-  <!--    <Header/>-->
   <div style="display: flex">
     <BaseSide class="side"/>
     <Main class="main"/>

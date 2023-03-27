@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {ElMessage} from "element-plus";
 
 // 创建一个 axios 实例
 const service = axios.create({
@@ -37,6 +38,10 @@ service.interceptors.response.use(
         const code = dataAxios.code
         if(code===40100){
             window.location.href='/login?redirect=/'
+            return Promise.reject()
+        }
+        if(code===40101){
+            ElMessage.error("无权限")
             return Promise.reject()
         }
         return dataAxios

@@ -13,32 +13,24 @@ export const constantRoutes: RouteRecordRaw[] = [
                 // meta:{isAuth:true},
                 component:()=>import('../views/InterfaceInfoDetail.vue')},
             {path: '/manager',
-                meta:{isAuth:true,roles:"admin"},
+                meta:{isAuth:true,roles:"admin,test"},
                 component:()=>import('../views/InterfaceManager.vue')},
+            {path: '/userManager',
+                meta:{isAuth:true,roles:"admin,test"},
+                component:()=>import('../views/UserManager.vue')},
             {path: '/analysis',
-                meta:{isAuth:true,roles:"admin"},
+                meta:{isAuth:true,roles:"admin,test"},
                 component:()=>import('../views/Analysis.vue')}
         ]
     },
     {path: '/login',
         component:()=>import('../views/login.vue')},
+    {path: '/register',
+        component:()=>import('../views/register.vue')},
     {path: '/:pathMatch(.*)',
         component:()=>import('../views/404.vue')}
 ]
-//
-// export const asyncRoutes: RouteRecordRaw[] =[
-//     {
-//         path:'/system',
-//         component:()=>import('../components/AppMain.vue'),
-//         name:'manager',
-//         meta:{isAuth:true,roles:"admin"},
-//         children:[
-//             {path: '/system/manager',
-//                 meta:{isAuth:true,roles:"admin"},
-//                 component:()=>import('../views/InterfaceManager.vue')}
-//         ]
-//     }
-// ]
+
 // 3. 创建路由实例并传递 `routes` 配置
 // 你可以在这里输入更多的配置，但我们在这里
 // 暂时保持简单
