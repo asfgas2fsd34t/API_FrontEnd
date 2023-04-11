@@ -7,7 +7,12 @@
       <el-table-column label="接口说明" prop="description"/>
       <el-table-column align="center">
         <template #header>
-          <el-input v-model="search" size="large" placeholder="试试搜索接口名称吧"/>
+          <el-input v-model="search" size="small" placeholder="Type to search" />
+        </template>
+        <template #default="scope">
+          <el-button link size="small" type="primary"
+          >查看详情</el-button
+          >
         </template>
       </el-table-column>
     </el-table>

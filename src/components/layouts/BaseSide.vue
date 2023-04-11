@@ -1,6 +1,6 @@
 <template>
     <el-menu
-        default-active="/home"
+        default-active="/analysis"
         class="el-menu-vertical-demo"
         router
         @open="handleOpen"
@@ -9,9 +9,17 @@
       <el-menu-item>
           <h2 style="color: #79bbff;left: 40px">空梦API平台</h2>
       </el-menu-item>
+      <el-menu-item index="/analysis" >
+        <el-icon><PieChart /></el-icon>
+        <span>接口统计</span>
+      </el-menu-item>
       <el-menu-item index="/home">
         <el-icon><icon-menu /></el-icon>
-        <span>主页</span>
+        <span>在线调用</span>
+      </el-menu-item>
+      <el-menu-item index="/user">
+        <el-icon><User /></el-icon>
+        <span>调用详情</span>
       </el-menu-item>
       <div v-if="show">
         <el-sub-menu index="1">
@@ -26,9 +34,7 @@
           <el-menu-item index="/userManager">
             用户管理
           </el-menu-item>
-          <el-menu-item index="/analysis" >
-            接口分析
-          </el-menu-item>
+
         </el-sub-menu>
       </div>
     </el-menu>
@@ -40,6 +46,8 @@ let user= JSON.parse(localStorage.getItem('userInfo'))
 const show= user?.userRole==="admin"||user?.userRole==="test"
 import {
   Menu as IconMenu,
+  PieChart,
+    User,
   Setting,
 } from '@element-plus/icons-vue'
 const handleOpen = (key: string, keyPath: string[]) => {

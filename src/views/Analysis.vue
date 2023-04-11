@@ -18,8 +18,8 @@ function analysis(){
   apiAnalysis().then((res)=>{
     myChart.setOption({
       title: {
-        text: 'Referer of a Website',
-        subtext: 'Fake Data',
+        text: '全球接口调用次数统计',
+        subtext: '空梦API',
         left: 'center'
       },
       tooltip: {

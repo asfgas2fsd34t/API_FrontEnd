@@ -3,14 +3,14 @@ import {createRouter,createWebHistory,RouteRecordRaw} from "vue-router/dist/vue-
 export const constantRoutes: RouteRecordRaw[] = [
     {
         path: '/',
-        redirect:'/home',
+        redirect:'/analysis',
         component:()=>import('../components/AppMain.vue'),
         children:[
             {path: '/home',
-                // meta:{isAuth:true},
+                meta:{isAuth:true},
                 component:()=>import('../views/Home.vue')  },
             {path: '/interface/:id(\\d+)',
-                // meta:{isAuth:true},
+                meta:{isAuth:true},
                 component:()=>import('../views/InterfaceInfoDetail.vue')},
             {path: '/manager',
                 meta:{isAuth:true,roles:"admin,test"},
@@ -19,8 +19,11 @@ export const constantRoutes: RouteRecordRaw[] = [
                 meta:{isAuth:true,roles:"admin,test"},
                 component:()=>import('../views/UserManager.vue')},
             {path: '/analysis',
-                meta:{isAuth:true,roles:"admin,test"},
-                component:()=>import('../views/Analysis.vue')}
+                meta:{isAuth:true},
+                component:()=>import('../views/Analysis.vue')},
+            {path: '/user',
+                meta:{isAuth:true},
+                component:()=>import('../views/UserInterfaceInfo.vue')}
         ]
     },
     {path: '/login',
