@@ -131,3 +131,17 @@ export function apiDeleteBatchUser(param:any) {
         data: param,
     })
 }
+export function apiUserInterfaceInfoList(param:any) {
+    return httpRequest({
+        url: '/userInterfaceInfo/list',
+        method: 'get',
+        params: param,
+    })
+}
+export function apiPlusUserInterfaceInfo(param:any) {
+    return httpRequest({
+        url: '/userInterfaceInfo/plus',
+        method: 'get',
+        params: param,
+    })
+}

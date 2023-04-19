@@ -6,15 +6,44 @@
           <div class="title">空梦API平台</div>
         </div>
       </div>
-      <el-form label-position="top" :rules="state.rules" :model="state.ruleForm" ref="loginForm" class="login-form">
-        <el-form-item label="账号" prop="username">
-          <el-input type="text" v-model.trim="state.ruleForm.username" autocomplete="off"></el-input>
+      <el-form size="large" label-position="top" :rules="state.rules" :model="state.ruleForm" ref="loginForm" class="login-form">
+        <el-form-item prop="username">
+          <el-input  placeholder="账号" type="text" v-model.trim="state.ruleForm.username" autocomplete="off">
+            <template #prefix>
+                <el-icon><User /></el-icon>
+            </template>
+          </el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model.trim="state.ruleForm.password" autocomplete="off"></el-input>
+        <el-form-item  prop="password">
+          <el-input placeholder="密码" type="password" v-model.trim="state.ruleForm.password" autocomplete="off">
+            <template #prefix>
+              <el-icon><Lock /></el-icon>
+            </template>
+          </el-input>
         </el-form-item>
-        <el-form-item label="确认密码" prop="checkPassword">
-          <el-input type="password" v-model.trim="state.ruleForm.checkPassword" autocomplete="off"></el-input>
+        <el-form-item prop="checkPassword">
+          <el-input placeholder="确认密码" type="password" v-model.trim="state.ruleForm.checkPassword" autocomplete="off">
+            <template #prefix>
+              <el-icon><Lock /></el-icon>
+            </template>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="phone">
+          <el-input placeholder="手机号" type="text"  autocomplete="off">
+            <template #prefix>
+              <el-icon><Iphone /></el-icon>
+            </template>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="code">
+          <div style="display: flex">
+            <el-input placeholder="请输入验证码" type="text"  autocomplete="off">
+              <template #prefix>
+                <el-icon><Lock /></el-icon>
+              </template>
+            </el-input>
+            <el-button style="margin-left: 5%;width: 30%">获取验证码</el-button>
+          </div>
         </el-form-item>
         <el-form-item>
           <el-button style="width: 100%" type="primary" @click="register">立即注册</el-button>
@@ -29,7 +58,11 @@ import { reactive, ref } from 'vue'
 import {apiUserRegister} from "../apis/api";
 import {ElMessage} from "element-plus";
 import {useRouter} from "vue-router";
-
+import {
+  User,
+  Lock,
+  Iphone
+} from '@element-plus/icons-vue'
 
 const router=useRouter()
 const loginForm = ref(null)
@@ -90,7 +123,7 @@ const register = async () => {
 }
 .login-container {
   width: 420px;
-  height: 500px;
+  height: 600px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0px 21px 41px 0px rgba(0, 0, 0, 0.2);

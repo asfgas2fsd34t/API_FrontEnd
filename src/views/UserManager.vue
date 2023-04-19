@@ -39,7 +39,19 @@
           label="操作"
           width="100"
       >
-        <template #default="scope">
+        <template #default="scope" >
+          <el-popover
+              placement="bottom"
+              :width="200"
+              trigger="click"
+          >
+            <div>
+              <el-button size="small" class="m-2" @click="openUserInterface(scope.row.id)">增加接口调用次数</el-button>
+            </div>
+            <template #reference>
+              <a style="cursor: pointer">管理</a>
+            </template>
+          </el-popover>
           <div v-if="scope.row.userRole!=='admin'">
             <el-popconfirm
                 title="确定删除吗？"
@@ -71,7 +83,7 @@
       style="padding-left: 40%;margin-top: 20px;margin-bottom: 20px"
   />
   <DialogUser ref='addGood' :reload="getUserList" :type="state.type" />
-
+  <DialogUserInterface ref="userInterface"/>
 </template>
 
 <script setup>
@@ -81,10 +93,12 @@ import { Plus, Delete } from '@element-plus/icons-vue'
 import { useRoute, useRouter } from 'vue-router'
 import {apiUserList,apiDeleteUser,apiDeleteBatchUser} from "../apis/api";
 import DialogUser from "../components/DialogUser.vue"
+import DialogUserInterface from "../components/DialogUserInterface.vue";
 
 const router = useRouter()
 const multipleTable = ref(null)
 const addGood = ref(null)
+const userInterface=ref(null)
 
 const state = reactive({
   loading: false,
@@ -100,6 +114,9 @@ onMounted(() => {
   getUserList()
 })
 
+const openUserInterface=(id)=>{
+  userInterface.value.open(id)
+}
 // 用户列表
 const getUserList = () => {
   state.loading = true
