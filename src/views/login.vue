@@ -32,17 +32,17 @@
               <el-link @click="register"  type="primary"  :underline="false">立即注册</el-link>
             </div>
             <div style="margin-left: 28%">
-              <el-link  type="primary"  :underline="false">忘记密码?</el-link>
+              <el-link  type="primary" @click="forget" :underline="false">忘记密码?</el-link>
             </div>
           </el-form-item>
           <el-form-item>
             <div style="color: #333">登录表示您已同意<a>《服务条款》</a></div>
-            <el-button style="width: 100%" type="primary" @click="submitForm">立即登录</el-button>
+            <el-button style="width: 100%" type="success" @click="submitForm">立即登录</el-button>
           </el-form-item>
         </div>
         <div v-if="state.type==='phone'">
           <el-form-item prop="phone">
-            <el-input placeholder="手机号" type="text"  autocomplete="off">
+            <el-input placeholder="手机号" type="text" v-model.trim="state.ruleForm.phone" autocomplete="off">
               <template #prefix>
                 <el-icon><Iphone /></el-icon>
               </template>
@@ -50,12 +50,13 @@
           </el-form-item>
           <el-form-item prop="code">
             <div style="display: flex">
-              <el-input placeholder="请输入验证码" type="text"  autocomplete="off">
+              <el-input placeholder="请输入验证码" type="text" v-model.trim="state.ruleForm.code"  autocomplete="off">
                 <template #prefix>
                   <el-icon><Lock /></el-icon>
                 </template>
               </el-input>
-              <el-button style="margin-left: 5%;width: 30%">获取验证码</el-button>
+              <el-button :loading="state.loading" :disabled="state.disabled"
+                         @click="getCheckCode" style="margin-left: 5%;width: 30%"> {{ state.text }}</el-button>
             </div>
           </el-form-item>
           <el-form-item>
@@ -63,12 +64,12 @@
               <el-link @click="register"  type="primary"  :underline="false">立即注册</el-link>
             </div>
             <div style="margin-left: 28%">
-              <el-link  type="primary"  :underline="false">忘记密码?</el-link>
+              <el-link  type="primary" @click="forget" :underline="false">忘记密码?</el-link>
             </div>
           </el-form-item>
           <el-form-item>
             <div style="color: #333">登录表示您已同意<a>《服务条款》</a></div>
-            <el-button style="width: 100%" type="primary" @click="submitForm">立即登录</el-button>
+            <el-button style="width: 100%" type="success" @click="submitForm">立即登录</el-button>
           </el-form-item>
         </div>
         <div v-if="state.type==='register'">
@@ -94,7 +95,7 @@
             </el-input>
           </el-form-item>
           <el-form-item prop="phone">
-            <el-input placeholder="手机号" type="text"  autocomplete="off">
+            <el-input placeholder="手机号" type="text" v-model.trim="state.ruleForm.phone"   autocomplete="off">
               <template #prefix>
                 <el-icon><Iphone /></el-icon>
               </template>
@@ -102,27 +103,29 @@
           </el-form-item>
           <el-form-item prop="code">
             <div style="display: flex">
-              <el-input placeholder="请输入验证码" type="text"  autocomplete="off">
+              <el-input placeholder="请输入验证码" type="text" v-model.trim="state.ruleForm.code"  autocomplete="off">
                 <template #prefix>
                   <el-icon><Lock /></el-icon>
                 </template>
               </el-input>
-              <el-button style="margin-left: 5%;width: 30%">获取验证码</el-button>
+              <el-button :loading="state.loading" :disabled="state.disabled"
+                         @click="getCheckCode" style="margin-left: 5%;width: 30%">{{ state.text }}</el-button>
             </div>
           </el-form-item>
           <el-form-item>
-            <el-button style="width: 100%" type="primary" @click="register">立即注册</el-button>
+            <el-button style="width: 100%" type="success" @click="registerSubmit">立即注册</el-button>
           </el-form-item>
         </div>
-
       </el-form>
     </div>
   </div>
+
+  <DialogForgetStep ref="forgetStep"></DialogForgetStep>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue'
-import {apiUserLogin} from "../apis/api";
+import {apiUserLogin, apiGetCode, apiUserRegister} from "../apis/api";
 import {ElMessage} from "element-plus";
 import {useRouter} from "vue-router";
 import {
@@ -130,14 +133,25 @@ import {
   Lock,
   Iphone
 } from '@element-plus/icons-vue'
+import DialogForgetStep from "../components/DialogForgetStep.vue";
 
+const forgetStep=ref(null)
 const router=useRouter()
 const loginForm = ref(null)
 const state = reactive({
+  disable:false,
+  loading:false,
+  duration:60,
+  timer:null,
+  text:'获取验证码',
   type:'userForm',
   ruleForm: {
     username: '',
-    password: ''
+    password: '',
+    checkPassword:'',
+    phone:'',
+    code:'',
+
   },
   checked: true,
   rules: {
@@ -146,24 +160,75 @@ const state = reactive({
     ],
     password: [
       { required: 'true', message: '密码不能为空', trigger: 'blur' }
+    ],
+    phone: [
+      { required: 'true', message: '手机号不能为空', trigger: 'blur' },
+      { min: 11, max: 11, message: "请输入11位手机号码", trigger: "blur" },
+      {
+        pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/,
+        //pattern: /^1[3456789]\d{9}$/,
+        message: "请输入正确的手机号码",
+      },
+    ],
+    code: [
+      { required: 'true', message: '验证码不能为空', trigger: 'blur' }
     ]
   }
 })
 
 const formType=()=>{
+    loginForm.value.resetFields();
     state.type='userForm'
 }
 const phoneType=()=>{
+  loginForm.value.resetFields();
   state.type='phone'
+}
+
+const forget =()=>{
+  forgetStep.value.open()
+}
+const getCheckCode = () => {
+  // 倒计时期间按钮不能单击
+  if (state.duration !== 60) {
+    state.disabled = true
+  }
+  // 清除掉定时器
+  state.timer && clearInterval(state.timer)
+  // 开启定时器
+  state.timer = setInterval(() => {
+    const tmp = state.duration--
+    state.text = `${tmp}秒`
+    if (tmp <= 0) {
+      // 清除掉定时器
+      clearInterval(state.timer)
+      state.duration = 60
+      state.text = '重新获取'
+      // 设置按钮可以单击
+      state.disabled = false
+    }
+  }, 1000)
+
+  const params={
+    phone:state.ruleForm.phone
+  }
+  apiGetCode(params).then((res)=>{
+    if(res.code===0){
+      ElMessage.success("发送成功")
+    }else{
+      ElMessage.error(res.message)
+    }
+  })
 }
 
 const submitForm = async () => {
   loginForm.value.validate((valid) => {
     if (valid) {
-      if(state.type==='userForm'){
         const params={
           userAccount:state.ruleForm.username,
-          userPassword:state.ruleForm.password
+          userPassword:state.ruleForm.password,
+          phone:state.ruleForm.phone,
+          code:state.ruleForm.code,
         }
         apiUserLogin(params).then((res)=>{
           if(res.code===0){
@@ -177,7 +242,6 @@ const submitForm = async () => {
             ElMessage.error(res.message)
           }
         })
-      }
     } else {
       ElMessage.error('格式错误，请重新输入')
       return false;
@@ -187,6 +251,36 @@ const submitForm = async () => {
 const register=async ()=>{
   state.type='register'
   // window.location.href='/register'
+}
+
+const registerSubmit=()=>{
+  loginForm.value.validate((valid) => {
+    if (valid && state.ruleForm.password===state.ruleForm.checkPassword) {
+      const params={
+        userAccount:state.ruleForm.username,
+        userPassword:state.ruleForm.password,
+        checkPassword:state.ruleForm.checkPassword,
+        phone:state.ruleForm.phone,
+        code:state.ruleForm.code,
+      }
+      apiUserRegister(params).then((res)=>{
+        if(res.code===0){
+          ElMessage.success("注册成功")
+          window.location.href='/login'
+        }else{
+          ElMessage.error(res.message)
+        }
+      })
+    } else {
+      if(state.ruleForm.password!==state.ruleForm.checkPassword){
+        ElMessage.error('密码输入不一致')
+      }else{
+        ElMessage.error('格式错误，请重新输入')
+      }
+      return false;
+    }
+  })
+
 }
 </script>
 

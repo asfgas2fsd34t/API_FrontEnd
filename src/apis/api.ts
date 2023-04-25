@@ -145,3 +145,24 @@ export function apiPlusUserInterfaceInfo(param:any) {
         params: param,
     })
 }
+export function apiGetCode(param:any) {
+    return httpRequest({
+        url: '/third/sendmsg',
+        method: 'post',
+        data: param,
+    })
+}
+export function apiCheckPhone(param:any) {
+    return httpRequest({
+        url: '/user/checkphone',
+        method: 'post',
+        data: param,
+    })
+}
+export function apiRePassword(param:any) {
+    return httpRequest({
+        url: '/user/repassword',
+        method: 'post',
+        data: param,
+    })
+}

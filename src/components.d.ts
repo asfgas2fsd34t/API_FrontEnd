@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppMain: typeof import('./components/AppMain.vue')['default']
     BaseSide: typeof import('./components/layouts/BaseSide.vue')['default']
+    DialogForgetStep: typeof import('./components/DialogForgetStep.vue')['default']
     DialogInterface: typeof import('./components/DialogInterface.vue')['default']
     DialogUser: typeof import('./components/DialogUser.vue')['default']
     DialogUserInterface: typeof import('./components/DialogUserInterface.vue')['default']
@@ -32,6 +33,8 @@ declare module '@vue/runtime-core' {
     ElPopover: typeof import('element-plus/es')['ElPopover']
     ElResult: typeof import('element-plus/es')['ElResult']
     ElSelect: typeof import('element-plus/es')['ElSelect']
+    ElStep: typeof import('element-plus/es')['ElStep']
+    ElSteps: typeof import('element-plus/es')['ElSteps']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTable: typeof import('element-plus/es')['ElTable']
