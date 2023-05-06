@@ -8,7 +8,7 @@
   >
     <el-form :model="state.ruleForm" :rules="state.rules" ref="formRef" >
       <el-form-item label="增加次数" prop="plusCount">
-        <el-input v-model="state.ruleForm.plusCount" autocomplete="off" />
+        <el-input type="number" v-model="state.ruleForm.plusCount" autocomplete="off" />
       </el-form-item>
       <el-form-item  label="接口名称" prop="interFaceInfo">
         <el-select v-model="interFaceId" placeholder="请选择接口名称">
@@ -49,7 +49,7 @@ const state = reactive({
     { required: 'true', message: '次数不能为空', trigger: ['blur'] },
   ],
     interFaceInfo: [
-      { required: 'true', message: '次数不能为空', trigger: ['blur'] },
+      { required: 'true', message: '接口不能为空', trigger: ['blur'] },
     ],
 },
 })

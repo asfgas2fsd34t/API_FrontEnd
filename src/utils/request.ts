@@ -37,6 +37,7 @@ service.interceptors.response.use(
         // 这个状态码是和后端约定的
         const code = dataAxios.code
         if(code===40100){
+            ElMessage.error("请登录后进行操作")
             window.location.href='/login?redirect=/'
             return Promise.reject()
         }

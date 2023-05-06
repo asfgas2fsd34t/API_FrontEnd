@@ -29,7 +29,8 @@
         <el-input placeholder="确认密码" type="password" v-model.trim="state.ruleForm.checkPassword" autocomplete="off"></el-input>
       </el-form-item>
     </el-form>
-    <el-button type="success" style="margin-top: 12px;width: 20%;margin-left: 70%" @click="next">下一步</el-button>
+    <el-button v-show="active" type="success" style="margin-top: 12px;width: 20%;" @click="back">上一步</el-button>
+    <el-button type="success" style="margin-top: 12px;width: 20%;margin-left: 60%" @click="next">下一步</el-button>
   </el-dialog>
 
 </template>
@@ -79,7 +80,9 @@ const state=reactive({
 
 const formRef = ref(null);
 
-
+const back=()=>{
+  active.value--
+}
 
 const next = () => {
   console.log(active.value)

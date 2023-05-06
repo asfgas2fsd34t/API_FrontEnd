@@ -79,7 +79,7 @@ onMounted(() => {
 </script>
 <style>
 .main{
-  min-height: 80%;
+  min-height: 82.5%;
 }
 .pagination{
   padding-left: 40%;

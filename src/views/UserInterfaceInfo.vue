@@ -17,7 +17,7 @@
           width="100"
       >
         <template #default="scope">
-          <a style="cursor: pointer; margin-right: 10px" @click="handleEdit(scope.row.id)">购买次数</a>
+          <a style="cursor: pointer; margin-right: 10px" @click="handleEdit(scope.row.interfaceInfoName,scope.row.id)">购买次数</a>
         </template>
       </el-table-column>
     </el-table>
@@ -32,13 +32,15 @@
       @current-change="changePage"
       style="padding-left: 40%;margin-top: 20px;margin-bottom: 20px"
   />
+  <DialogOrder ref="order"></DialogOrder>
 </template>
 
 <script setup>
-import {onMounted, reactive} from "vue";
-import {apiUserInterfaceInfoList} from "../apis/api";
-import { ElMessage } from 'element-plus'
+import {onMounted, reactive,ref} from "vue";
+import {apiUserInterfaceInfoList, apiIsLogin, apiAliPay} from "../apis/api";
+import DialogOrder from "../components/DialogOrder.vue"
 
+const order=ref(null)
 const state = reactive({
   loading: false,
   tableData: [], // 数据列表
@@ -69,11 +71,30 @@ onMounted(() => {
   getUserInterfaceInfoList()
 })
 
-const handleEdit= ()=>{
-  ElMessage.info("功能待开发");
+const handleEdit= (interfaceInfoName,id)=>{
+  order.value.open(interfaceInfoName,id)
+  // const params={
+  //   traceNo:'11114521',
+  //   totalAmount:123,
+  //   subject:"dddddd"
+  // }
+  // apiAliPay(params).then((res)=>{
+  //
+  // })
+  // apiIsLogin(null).then((res)=>{
+  //   if(res.code===0){
+      // ElMessage.info("功能待开发");
+      // window.open("http://localhost:7529/api/third/alipay/pay?subject="+params.subject+"&traceNo="+
+      //     params.traceNo+"&totalAmount="+params.totalAmount)
+  //   }
+  // })
+
 }
+
 </script>
 
 <style scoped>
-
+.index-container {
+  min-height: 80%;
+}
 </style>
