@@ -24,7 +24,7 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="close()">取 消</el-button>
-        <el-button type="info" @click="submitForm">确 定</el-button>
+        <el-button :disabled="state.disable" type="info" @click="submitForm">确 定</el-button>
       </span>
     </template>
   </el-dialog>
@@ -33,12 +33,15 @@
 <script setup>
 
 import {reactive, ref} from "vue";
-import {apiIOrderCreate} from "../apis/api";
+import { apiIOrderCreate} from "../apis/api";
 import {ElMessage} from "element-plus";
+import { v4 as uuidv4 } from 'uuid';
 
 const formRef = ref(null)
+const randomId=ref(null)
 const state = reactive({
   visible: false,
+  disable:false,
   ruleForm: {
     id:'',
     signalAmount:0.1,
@@ -56,23 +59,34 @@ const state = reactive({
 const submitForm = () => {
   formRef.value.validate((valid) => {
     if (valid) {
-      const params={
-        id:state.ruleForm.id,
-        plusCount:state.ruleForm.plusCount,
-        signalAmount:state.ruleForm.signalAmount
+      state.disable=true
+      const params = {
+        id: state.ruleForm.id,
+        plusCount: state.ruleForm.plusCount,
+        signalAmount: state.ruleForm.signalAmount,
+        requestId:randomId.value
       }
-        apiIOrderCreate(params).then((res)=>{
-            alert(res.data)
-        })
+      console.log(randomId.value)
+      apiIOrderCreate(params).then((res) => {
+        console.log(res.data)
+        state.disable=false
+        close()
+        window.open("http://localhost:7529/api/alipay/pay?subject="+res.data.interfaceName+"&traceNo="+
+            res.data.traceNo+"&totalAmount="+res.data.totalAmount)
+      },(error)=>{
+        ElMessage.error("请求超时！")
+        state.disable=false
+      })
     }
   })
 }
-
 // 开启弹窗
 const open = (interfaceName,id) => {
   state.ruleForm.interfaceName=interfaceName
   state.ruleForm.id=id
   state.visible = true
+  state.disable=false
+  randomId.value=uuidv4()
 }
 // 关闭弹窗
 const close = () => {

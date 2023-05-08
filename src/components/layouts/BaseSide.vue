@@ -21,6 +21,10 @@
         <el-icon><User /></el-icon>
         <span>调用详情</span>
       </el-menu-item>
+      <el-menu-item index="/cart">
+        <el-icon><ShoppingCart /></el-icon>
+        <span>我的订单</span>
+      </el-menu-item>
       <div v-if="show">
         <el-sub-menu index="1">
           <template #title>
@@ -48,6 +52,7 @@ import {
   Menu as IconMenu,
   PieChart,
     User,
+  ShoppingCart,
   Setting,
 } from '@element-plus/icons-vue'
 const handleOpen = (key: string, keyPath: string[]) => {

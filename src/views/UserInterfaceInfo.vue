@@ -37,7 +37,7 @@
 
 <script setup>
 import {onMounted, reactive,ref} from "vue";
-import {apiUserInterfaceInfoList, apiIsLogin, apiAliPay} from "../apis/api";
+import {apiUserInterfaceInfoList} from "../apis/api";
 import DialogOrder from "../components/DialogOrder.vue"
 
 const order=ref(null)
@@ -73,21 +73,7 @@ onMounted(() => {
 
 const handleEdit= (interfaceInfoName,id)=>{
   order.value.open(interfaceInfoName,id)
-  // const params={
-  //   traceNo:'11114521',
-  //   totalAmount:123,
-  //   subject:"dddddd"
-  // }
-  // apiAliPay(params).then((res)=>{
-  //
-  // })
-  // apiIsLogin(null).then((res)=>{
-  //   if(res.code===0){
-      // ElMessage.info("功能待开发");
-      // window.open("http://localhost:7529/api/third/alipay/pay?subject="+params.subject+"&traceNo="+
-      //     params.traceNo+"&totalAmount="+params.totalAmount)
-  //   }
-  // })
+
 
 }
 

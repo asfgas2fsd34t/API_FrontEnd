@@ -166,24 +166,18 @@ export function apiRePassword(param:any) {
         data: param,
     })
 }
-export function apiAliPay(param:any) {
-    return httpRequest({
-        url: '/third/alipay/pay',
-        method: 'get',
-        params: param,
-    })
-}
-export function apiIsLogin(param:any) {
-    return httpRequest({
-        url: '/user/islogin',
-        method: 'get',
-        params: param,
-    })
-}
+
 export function apiIOrderCreate(param:any) {
     return httpRequest({
         url: '/order/add',
         method: 'post',
         data: param,
+    })
+}
+export function apiIOrderList(param:any) {
+    return httpRequest({
+        url: '/order/list',
+        method: 'get',
+        params: param,
     })
 }

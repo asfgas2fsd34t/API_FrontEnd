@@ -23,7 +23,10 @@ export const constantRoutes: RouteRecordRaw[] = [
                 component:()=>import('../views/Analysis.vue')},
             {path: '/user',
                 meta:{isAuth:true},
-                component:()=>import('../views/UserInterfaceInfo.vue')}
+                component:()=>import('../views/UserInterfaceInfo.vue')},
+            {path: '/cart',
+                meta:{isAuth:true},
+                component:()=>import('../views/cart.vue')}
         ]
     },
     {path: '/login',
