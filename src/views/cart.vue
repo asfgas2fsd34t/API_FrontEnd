@@ -20,12 +20,7 @@
             {{scope.row.status===1?"待付款":(scope.row.status===2?"已付款":"已取消")}}
         </template>
       </el-table-column>
-<!--      <el-table-column>-->
-<!--        <template #default="scope">-->
-<!--        <div v-if="scope.row.status===1"  class="time">剩余{{}}分钟 {{}}秒 </div>-->
-<!--        </template>-->
 
-<!--      </el-table-column>-->
       <el-table-column
           width="100"
       >
