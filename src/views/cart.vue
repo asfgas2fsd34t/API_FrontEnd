@@ -60,33 +60,6 @@ const state = reactive({
   pageSize: 10, // 分页大小
 })
 
-// const countdown=(startTime) =>{
-//   const end = Date.parse(new Date(startTime).toString())
-//   const now = Date.parse(new Date().toString())
-//   const msec = end - now
-//
-//   // console.log(msec)
-//   if(msec<0) return;
-//
-//
-//   let min = parseInt(msec / 1000 / 60 % 60)
-//   let sec = parseInt(msec / 1000 % 60)
-//   min = min > 9 ? min : '0' + min
-//   sec = sec > 9 ? sec : '0' + sec
-//   if(min>=0 && sec>=0){
-//     //倒计时结束关闭订单
-//     if(min==0 && sec==0){
-//       return
-//     }
-//     setTimeout(function () {
-//       countdown()
-//     }, 1000)
-//   }
-// }
-//
-// computed(()=>{
-//
-// })
 
 const handleBuy=(id)=>{
     const params={
