@@ -181,3 +181,10 @@ export function apiIOrderList(param:any) {
         params: param,
     })
 }
+export function apiIOrderGet(param:any) {
+    return httpRequest({
+        url: '/order/get',
+        method: 'get',
+        params: param,
+    })
+}
